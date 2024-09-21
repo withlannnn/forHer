@@ -39,7 +39,7 @@
             font-weight: bold;
             color: #333;
             font-family: 'Montserrat', sans-serif;
-            display: none; /* Tersembunyi awalnya */
+            display: none;
         }
     </style>
 </head>
@@ -53,14 +53,12 @@
     </div>
 
     <script>
-        // Ambil nama dari URL
         const urlParams = new URLSearchParams(window.location.search);
-        const name = urlParams.get('name') || 'Mira'; // Default "Mira" jika nama tidak diinput
+        const name = urlParams.get('name') || 'Mira';
         
-        // Kalimat yang ditampilkan
         const initialText = "I don't know, but...";
         const likeYouText = "I Like You!";
-        const text = `Itu perasaan lamaku, tpi malah muncul lagi akhir-akhir ini. Entah kamu peduli apa nggak itu terserah kamu, intinya itu serius, Aku serius, I Really Like You. Makasiii and Have a Nice Day ${name}!`;
+        const text = `Udah lama, tpi malah muncul lagi. Entah kamu peduli atau ngga, intinya itu serius, Aku serius, I Really Like You. Makasiii and Have a Nice Day ${name}!`;
         
         let initialIndex = 0;
         let likeYouIndex = 0;
@@ -75,21 +73,19 @@
                 initialIndex++;
                 setTimeout(typeWriterInitial, speed);
             } else {
-                // Setelah selesai mengetik initialText, tambahkan jeda sebelum mengetik likeYouText
                 setTimeout(typeWriterLikeYou, pauseAfterInitial);
             }
         }
 
         function typeWriterLikeYou() {
-            document.getElementById("likeYouText").style.display = "block"; // Tampilkan elemen
+            document.getElementById("likeYouText").style.display = "block";
             if (likeYouIndex < likeYouText.length) {
                 document.getElementById("likeYouText").innerHTML += likeYouText.charAt(likeYouIndex);
                 likeYouIndex++;
                 setTimeout(typeWriterLikeYou, speed);
             } else {
-                // Setelah selesai mengetik likeYouText, tambahkan jeda sebelum mengetik surpriseText
                 setTimeout(() => {
-                    document.getElementById("surpriseText").style.display = "block"; // Tampilkan elemen
+                    document.getElementById("surpriseText").style.display = "block";
                     typeWriter();
                 }, pauseAfterLikeYou);
             }
