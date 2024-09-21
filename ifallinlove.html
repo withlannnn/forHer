@@ -58,7 +58,7 @@
         
         const initialText = "I don't know, but...";
         const likeYouText = "I Like You!";
-        const text = `Udah lama, tpi malah muncul lagi. Entah kamu peduli atau ngga, intinya itu serius, Aku serius, I Really Like You. Makasiii and Have a Nice Day ${name}!`;
+        const text = `Udah lama, tapi malah muncul lagi. Entah kamu peduli atau nggak, intinya itu serius, Aku serius, I Really Like You. Makasiii and Have a Nice Day ${name}!`;
         
         let initialIndex = 0;
         let likeYouIndex = 0;
@@ -66,12 +66,24 @@
         const speed = 70;
         const pauseAfterInitial = 1000;
         const pauseAfterLikeYou = 1000;
+        const pauseForComma = 300; // Jeda untuk koma
+        const pauseForPeriod = 500; // Jeda untuk titik
 
         function typeWriterInitial() {
             if (initialIndex < initialText.length) {
                 document.getElementById("initialText").innerHTML += initialText.charAt(initialIndex);
+                const char = initialText.charAt(initialIndex);
                 initialIndex++;
-                setTimeout(typeWriterInitial, speed);
+                
+                // Jika tanda koma atau titik, tambahkan jeda
+                let delay = speed;
+                if (char === ',') {
+                    delay = pauseForComma;
+                } else if (char === '.') {
+                    delay = pauseForPeriod;
+                }
+                
+                setTimeout(typeWriterInitial, delay);
             } else {
                 setTimeout(typeWriterLikeYou, pauseAfterInitial);
             }
@@ -81,8 +93,18 @@
             document.getElementById("likeYouText").style.display = "block";
             if (likeYouIndex < likeYouText.length) {
                 document.getElementById("likeYouText").innerHTML += likeYouText.charAt(likeYouIndex);
+                const char = likeYouText.charAt(likeYouIndex);
                 likeYouIndex++;
-                setTimeout(typeWriterLikeYou, speed);
+                
+                // Jika tanda koma atau titik, tambahkan jeda
+                let delay = speed;
+                if (char === ',') {
+                    delay = pauseForComma;
+                } else if (char === '.') {
+                    delay = pauseForPeriod;
+                }
+                
+                setTimeout(typeWriterLikeYou, delay);
             } else {
                 setTimeout(() => {
                     document.getElementById("surpriseText").style.display = "block";
@@ -94,8 +116,18 @@
         function typeWriter() {
             if (index < text.length) {
                 document.getElementById("surpriseText").innerHTML += text.charAt(index);
+                const char = text.charAt(index);
                 index++;
-                setTimeout(typeWriter, speed);
+                
+                // Jika tanda koma atau titik, tambahkan jeda
+                let delay = speed;
+                if (char === ',') {
+                    delay = pauseForComma;
+                } else if (char === '.') {
+                    delay = pauseForPeriod;
+                }
+                
+                setTimeout(typeWriter, delay);
             }
         }
 
