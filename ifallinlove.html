@@ -53,9 +53,14 @@
     </div>
 
     <script>
+        // Ambil nama dari URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name') || 'Mira'; // Default "Mira" jika nama tidak diinput
+        
+        // Kalimat yang ditampilkan
         const initialText = "I don't know, but...";
         const likeYouText = "I Like You!";
-        const text = "Itu perasaan lamaku, tpi malah muncul lagi akhir-akhir ini. Entah kamu peduli apa nggak itu terserah kamu, intinya itu serius, Aku serius, I Really Like You. Makasiii and Have a Nice Day Miraaa!";
+        const text = `Itu perasaan lamaku, tpi malah muncul lagi akhir-akhir ini. Entah kamu peduli apa nggak itu terserah kamu, intinya itu serius, Aku serius, I Really Like You. Makasiii and Have a Nice Day ${name}!`;
         
         let initialIndex = 0;
         let likeYouIndex = 0;
