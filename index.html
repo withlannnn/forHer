@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for Mira</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        h1,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .input-field {
+            margin: 20px 0;
+        }
+        
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            width: 200px;
+            text-align: center;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        @media (max-width: 600px) {
+            .button-group {
+                flex-direction: column;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Halaman 1 (Ditampilkan pertama kali) -->
+    <div id="page1" class="container">
+        <h1>Hiii</h1>
+        <h3>Namamu dulu!</h3>
+        <div class="input-field">
+            <input type="text" id="nameInput" placeholder="Disini!">
+        </div>
+        <button onclick="goToPage3()">Lanjut</button>
+    </div>
+
+    <!-- Halaman 3 -->
+    <div id="page3" class="container" style="display: none;">
+        <h1 id="userNameDisplay"></h1>
+        <h3>I have something for you</h3>
+        <div class="button-group">
+            <button class="flowers" onclick="goToPageSurprise()">First</button>
+            <button class="second-button" onclick="goToSecondPage()">Second</button>
+        </div>
+    </div>
+
+    <script>
+        function goToPage3() {
+            const name = document.getElementById('nameInput').value;
+            if (name) {
+                document.getElementById('userNameDisplay').innerText = "Hi, " + name + "!";
+                document.getElementById('page1').style.display = 'none';
+                document.getElementById('page3').style.display = 'block';
+            } else {
+                alert('Type dulu :)');
+            }
+        }
+
+        function goToPageSurprise() {
+            window.location.href = 'flower.html';
+        }
+
+        function goToSecondPage() {
+            window.location.href = 'ifallinlove.html';
+        }
+    </script>
+
+</body>
+
+</html>

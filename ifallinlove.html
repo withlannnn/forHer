@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Another Surprise</title>
+
+    <!-- Import Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            flex-direction: column;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            color: #333;
+            margin: 0;
+        }
+        
+        .text-display {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            display: none;
+            /* Tersembunyi awalnya */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 id="initialText"></h1>
+        <h1 id="likeYouText" style="display: none;"></h1>
+        <div class="text-display" id="surpriseText"></div>
+    </div>
+
+    <script>
+        const initialText = "I don't know, but...";
+        const likeYouText = "I Like You!";
+        const text = "Itu perasaan lamaku, tpi malah muncul lagi akhir-akhir ini. Entah kamu peduli apa nggak itu terserah kamu, intinya itu serius, Aku serius, I Really Like You. Makasiii and Have a Nice Day Miraaa!";
+
+        let initialIndex = 0;
+        let likeYouIndex = 0;
+        let index = 0;
+        const speed = 70;
+        const pauseAfterInitial = 1000; // Jeda 1 detik setelah initialText
+        const pauseAfterLikeYou = 1000; // Jeda 1 detik setelah likeYouText
+
+        function typeWriterInitial() {
+            if (initialIndex < initialText.length) {
+                document.getElementById("initialText").innerHTML += initialText.charAt(initialIndex);
+                initialIndex++;
+                setTimeout(typeWriterInitial, speed);
+            } else {
+                // Setelah selesai mengetik initialText, tambahkan jeda sebelum mengetik likeYouText
+                setTimeout(typeWriterLikeYou, pauseAfterInitial);
+            }
+        }
+
+        function typeWriterLikeYou() {
+            document.getElementById("likeYouText").style.display = "block"; // Tampilkan elemen
+            if (likeYouIndex < likeYouText.length) {
+                document.getElementById("likeYouText").innerHTML += likeYouText.charAt(likeYouIndex);
+                likeYouIndex++;
+                setTimeout(typeWriterLikeYou, speed);
+            } else {
+                // Setelah selesai mengetik likeYouText, tambahkan jeda sebelum mengetik surpriseText
+                setTimeout(() => {
+                    document.getElementById("surpriseText").style.display = "block"; // Tampilkan elemen
+                    typeWriter();
+                }, pauseAfterLikeYou);
+            }
+        }
+
+        function typeWriter() {
+            if (index < text.length) {
+                document.getElementById("surpriseText").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        window.onload = typeWriterInitial;
+    </script>
+
+</body>
+
+</html>
