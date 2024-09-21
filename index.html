@@ -43,6 +43,12 @@
             border: 1px solid #ccc;
             font-family: 'Montserrat', sans-serif;
         }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Tambahkan jarak antar tombol */
+        }
         
         button {
             padding: 10px 20px;
@@ -55,6 +61,7 @@
             font-family: 'Montserrat', sans-serif;
             width: 200px;
             text-align: center;
+            margin-top: 10px; /* Jarak antara tombol dan elemen lainnya */
         }
         
         button:hover {
@@ -62,6 +69,9 @@
         }
         
         @media (max-width: 600px) {
+            .button-group {
+                flex-direction: column;
+            }
             button {
                 width: 100%;
             }
