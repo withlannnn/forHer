@@ -26,7 +26,7 @@
         }
         
         h1,
-        h6 {
+        h3 {
             font-family: 'Montserrat', sans-serif;
         }
         
@@ -42,12 +42,6 @@
             border-radius: 5px;
             border: 1px solid #ccc;
             font-family: 'Montserrat', sans-serif;
-        }
-        
-        .button-group {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
         }
         
         button {
@@ -68,9 +62,6 @@
         }
         
         @media (max-width: 600px) {
-            .button-group {
-                flex-direction: column;
-            }
             button {
                 width: 100%;
             }
@@ -113,11 +104,21 @@
         }
 
         function goToPageSurprise() {
-            window.location.href = 'flower.html';
+            const name = document.getElementById('nameInput').value;
+            if (name) {
+                window.location.href = 'flower.html?name=' + encodeURIComponent(name);
+            } else {
+                alert('Masukkan nama dulu!');
+            }
         }
 
         function goToSecondPage() {
-            window.location.href = 'ifallinlove.html';
+            const name = document.getElementById('nameInput').value;
+            if (name) {
+                window.location.href = 'ifallinlove.html?name=' + encodeURIComponent(name);
+            } else {
+                alert('Masukkan nama dulu!');
+            }
         }
     </script>
 
